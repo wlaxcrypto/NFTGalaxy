@@ -1,0 +1,19 @@
+# scripts/data_collection.py
+
+import requests
+import pandas as pd
+
+def fetch_nft_data(collection_slug):
+    # Fetch NFT data from a specific API
+    url = f'https://api.opensea.io/api/v1/assets?order_direction=desc&offset=0&limit=50&collection={collection_slug}'
+    headers = {
+        "Accept": "application/json",
+        "X-API-KEY": "YOUR_OPENSEA_API_KEY"
+    }
+    response = requests.get(url, headers=headers)
+    data = response.json()
+    return data
+
+# Example usage:
+# nft_data = fetch_nft_data('cryptopunks')
+# print(nft_data)
